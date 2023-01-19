@@ -9,6 +9,7 @@ import { setupClone } from './clone';
 import { setupInit } from './init';
 import { setupRepo } from './repo';
 import { setupBash } from './tools/bash';
+import { setupSave } from './save';
 
 program.option('--debug');
 
@@ -47,6 +48,9 @@ setupUpgrade(upgrade);
 
 const status = program.command('status');
 setupStatus(status);
+
+const save = program.command('save');
+setupSave(save);
 
 const repo = program.command('repo');
 setupRepo(repo);

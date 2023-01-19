@@ -22,7 +22,7 @@ const setupStatus = (status: Command) => {
             continue;
           }
           const output = [repo.name];
-          if (result.ahead > 0 && result.behind > 0) {
+          if (result.ahead > 0 || result.behind > 0) {
             output.push(yellow(`${result.ahead}/${result.behind}`));
           }
           if (!result.clean) {

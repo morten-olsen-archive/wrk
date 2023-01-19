@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 require('source-map-support/register');
-require('../dist/src/bin');
+require('../dist/cjs/src/bin');

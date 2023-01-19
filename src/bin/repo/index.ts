@@ -4,6 +4,7 @@ import { setupRemove } from './remove';
 import { Command } from 'commander';
 import { setupPath } from './path';
 import { setupSelect } from './select';
+import { setupLink } from './link';
 
 const setupRepo = (program: Command) => {
   const add = program.command('add');
@@ -20,6 +21,10 @@ const setupRepo = (program: Command) => {
 
   const select = program.command('select');
   setupSelect(select);
+
+  const link = program.command('link');
+  setupLink(link);
+
 };
 
 export { setupRepo };

@@ -1,5 +1,5 @@
-import { mkdirp } from 'fs-extra';
-import { dirname, relative, resolve } from 'path';
+import { mkdirp, symlink } from 'fs-extra';
+import { relative, resolve } from 'path';
 import simpleGit, { SimpleGit } from 'simple-git';
 import { Project } from '../project';
 
@@ -64,6 +64,11 @@ class Repo {
     console.log(this.name, location);
     this.#project.git.mv(this.root, location);
   };
+
+  public link = async (location: string) => {
+    await mkdirp(resolve(location, '..'));
+    await symlink(this.root, location);
+  }
 }
 
 export { Repo };

@@ -10,6 +10,21 @@ import { setupInit } from './init';
 import { setupRepo } from './repo';
 import { setupBash } from './tools/bash';
 
+program.option('--debug');
+
+process.on('unhandledRejection', (reason) => {
+  const { debug } = program.opts();
+  if (reason instanceof Error) {
+    console.error(reason.message);
+    if (debug && reason.stack) {
+      console.warn(reason.stack);
+    }
+  } else {
+    console.error(reason);
+  }
+  process.exit(-1);
+})
+
 program.option('--location <location>', 'foo', Project.defaultLocation);
 
 const version = program.command('version');

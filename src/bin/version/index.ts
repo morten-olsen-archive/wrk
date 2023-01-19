@@ -17,8 +17,8 @@ const setupVersion = (version: Command) => {
         console.log(`${blue('name')}: ${input.name}`);
         console.log(`${blue('version')}: ${input.version}`);
         console.log(`${blue('data-location')}: ${input.locations.data}`);
-      } 
-    })
+      },
+    });
   });
 };
 

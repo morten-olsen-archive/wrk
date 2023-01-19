@@ -24,7 +24,7 @@ process.on('unhandledRejection', (reason) => {
     console.error(reason);
   }
   process.exit(-1);
-})
+});
 
 program.option('--location <location>', 'foo', Project.defaultLocation);
 

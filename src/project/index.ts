@@ -68,8 +68,7 @@ class Project {
 
   public [setup] = async () => {
     this.#repo = simpleGit(this.#location);
-    const submodules = await this.#repo.raw('submodule', 'status', {
-    });
+    const submodules = await this.#repo.raw('submodule', 'status', {});
     const paths = submodules
       .split('\n')
       .filter(Boolean)

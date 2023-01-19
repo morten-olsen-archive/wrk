@@ -24,7 +24,6 @@ const setupRepo = (program: Command) => {
 
   const link = program.command('link');
   setupLink(link);
-
 };
 
 export { setupRepo };

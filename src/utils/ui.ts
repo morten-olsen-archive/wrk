@@ -16,13 +16,14 @@ const selectRepo = async (project: Project) => {
   const { name } = await prompt({
     type: 'autocomplete',
     name: 'name',
-    source: (_: any, input: string) => {
+    source: (_: unknown, input: string) => {
       if (!input) {
         return repos;
       }
       const filtered = fuzzy.simpleFilter(input, repos);
       return filtered;
     },
+    // rome-ignore lint/suspicious/noExplicitAny: incorrect types in library
   } as any);
   const repo = project.getRepo(name);
   ttys.stdin.pause();
@@ -37,8 +38,8 @@ const selectDirectory = async (baseUrl: string) => {
   const { dir } = await prompt({
     type: 'input',
     name: 'dir',
-  } as any);
+  });
   return resolve(baseUrl, dir);
-}
+};
 
 export { selectRepo, selectDirectory };

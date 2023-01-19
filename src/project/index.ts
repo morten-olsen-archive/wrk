@@ -95,7 +95,6 @@ class Project {
   };
 
   public status = async () => {
-    await this.update();
     const result = await this.apply(async (r) => r.status());
     return result;
   };

@@ -68,7 +68,7 @@ class Repo {
   public link = async (location: string) => {
     await mkdirp(resolve(location, '..'));
     await symlink(this.root, location);
-  }
+  };
 }
 
 export { Repo };

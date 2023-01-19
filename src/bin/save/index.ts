@@ -1,4 +1,3 @@
-
 import { Command, program } from 'commander';
 import { Project } from '../../project';
 

@@ -1,7 +1,7 @@
 import { program } from 'commander';
 
 type Formats<T> = {
-  json?: (input: T) => any;
+  json?: (input: T) => unknown;
   rich: (input: T) => void | Promise<void>;
 };
 

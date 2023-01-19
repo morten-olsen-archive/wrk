@@ -1,10 +1,12 @@
 import { Command } from 'commander';
 import { info } from '../../../info';
 
+const CMD = info.name;
+
 const script = `
 function ${info.name}-cd {
-  NAME=\`gitproj repo select\`;
-  TARGET=\`gitproj repo path --name="$NAME"\`;
+  NAME=\`${CMD} repo select\`;
+  TARGET=\`${CMD} repo path --name="$NAME"\`;
 
   cd "$TARGET";
 }

@@ -2,6 +2,9 @@
   "name": "@morten-olsen/wrk",
   "version": "0.0.1",
   "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "packageManager": "pnpm@7.24.3",
   "bin": "./bin/bin.js",
   "files": [
@@ -9,17 +12,31 @@
     "bin/**/*"
   ],
   "scripts": {
+    "clean": "rm -rf ./dist",
     "postinstall": "husky install",
     "test:lint": "rome ci src",
     "test": "pnpm run test:lint",
-    "build": "tsc --build",
+    "build": "npm run clean && npm run build:cjs",
+    "build:esm": "tsc -p ./tsconfig.esm.json && mv dist/esm/src/index.js dist/esm/src/index.mjs",
+    "build:cjs": "tsc -p ./tsconfig.json",
     "change:create": "changeset",
     "ci:version": "changeset version",
     "ci:publish": "pnpm publish --access public"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "types": "./dist/cjs/types/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/types/index.d.ts",
+        "default": "./dist/esm/src/index.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/types/index.d.ts",
+        "default": "./dist/cjs/src/index.js"
+      }
+    }
+  },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"

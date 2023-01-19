@@ -1,12 +1,12 @@
 import { Project } from '../project';
-import inquirer from 'inquirer';
-import inquirerPrompt from 'inquirer-autocomplete-prompt';
 import fuzzy from 'fuzzy';
 import { resolve } from 'path';
 
 const ttys = require('ttys');
 
 const selectRepo = async (project: Project) => {
+  const inquirer = await import('inquirer');
+  const { default: inquirerPrompt } = await import('inquirer-autocomplete-prompt');
   const repos = project.repos.map((r) => r.name);
   const prompt = inquirer.createPromptModule({
     output: ttys.stdout,
@@ -31,6 +31,7 @@ const selectRepo = async (project: Project) => {
 };
 
 const selectDirectory = async (baseUrl: string) => {
+  const inquirer = await import('inquirer');
   const prompt = inquirer.createPromptModule({
     output: ttys.stdout,
     input: ttys.stdin,

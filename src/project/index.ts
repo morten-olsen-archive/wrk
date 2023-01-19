@@ -69,7 +69,6 @@ class Project {
   public [setup] = async () => {
     this.#repo = simpleGit(this.#location);
     const submodules = await this.#repo.raw('submodule', 'status', {
-      '--recursive': null,
     });
     const paths = submodules
       .split('\n')

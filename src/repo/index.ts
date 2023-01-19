@@ -1,4 +1,5 @@
-import { relative } from 'path';
+import { mkdirp } from 'fs-extra';
+import { dirname, relative, resolve } from 'path';
 import simpleGit, { SimpleGit } from 'simple-git';
 import { Project } from '../project';
 
@@ -58,6 +59,9 @@ class Repo {
   };
 
   public move = async (location: string) => {
+    const rootDir = resolve(this.#project.root, location);
+    await mkdirp(resolve(rootDir, '..'));
+    console.log(this.name, location);
     this.#project.git.mv(this.root, location);
   };
 }

@@ -9,7 +9,6 @@
     "bin/**/*"
   ],
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "postinstall": "husky install",
     "test": "echo no tests",
     "build": "tsc --build",
@@ -47,6 +46,7 @@
     "fuzzy": "^0.1.3",
     "inquirer": "^8",
     "inquirer-autocomplete-prompt": "^2.0.0",
+    "inquirer-directory": "^2.2.0",
     "simple-git": "^3.16.0",
     "source-map-support": "^0.5.21",
     "ttys": "^0.0.3"

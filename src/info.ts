@@ -1,13 +1,16 @@
 import envPaths from 'env-paths';
 import pkg from '../package.json';
 
-const paths = envPaths(pkg.name, {
+const parts = pkg.name.split('/');
+const name = parts.pop()!;
+
+const paths = envPaths(name, {
   suffix: '',
 });
+
 class Info {
   public get name() {
-    const parts = pkg.name.split('/');
-    return parts.pop()!;
+    return name;
   }
 
   public get version() {

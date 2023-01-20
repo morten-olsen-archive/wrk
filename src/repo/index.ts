@@ -29,8 +29,7 @@ class Repo {
     return relative(this.#project.root, this.root);
   }
 
-  public load = async () => {
-  };
+  public load = async () => {};
 
   public update = async () => {
     await this.#repo.fetch();

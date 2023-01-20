@@ -6,9 +6,10 @@ import { Project } from '../project';
 class Repo {
   #repo: SimpleGit;
   #project: Project;
-  #root?: string;
+  #root: string;
 
   private constructor(location: string, project: Project) {
+    this.#root = location;
     this.#repo = simpleGit(location);
     this.#project = project;
   }
@@ -21,9 +22,6 @@ class Repo {
   };
 
   public get root() {
-    if (!this.#root) {
-      throw new Error('Not loaded');
-    }
     return this.#root;
   }
 
@@ -32,7 +30,6 @@ class Repo {
   }
 
   public load = async () => {
-    this.#root = await this.#getRoot();
   };
 
   public update = async () => {
@@ -61,7 +58,6 @@ class Repo {
   public move = async (location: string) => {
     const rootDir = resolve(this.#project.root, location);
     await mkdirp(resolve(rootDir, '..'));
-    console.log(this.name, location);
     this.#project.git.mv(this.root, location);
   };
 

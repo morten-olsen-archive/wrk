@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "clean": "rm -rf ./dist",
-    "postinstall": "husky install",
+    "prepare": "husky install && pnpm build",
     "test:lint": "rome ci src",
     "test": "pnpm run test:lint",
     "build": "npm run clean && npm run build:cjs",

@@ -148,7 +148,9 @@ class Project {
       throw new Error('Location already exists');
     }
     await mkdirp(location);
-    await simpleGit(location).clone(remote);
+    await simpleGit(location).clone(remote, location);
+    await simpleGit(location).submoduleInit();
+    await simpleGit(location).submoduleUpdate(['--init', '--recursive']);
     return Project.load(location);
   };
 }

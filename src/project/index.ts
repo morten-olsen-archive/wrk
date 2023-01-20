@@ -34,6 +34,15 @@ class Project {
     return this.#location;
   }
 
+  public getRemote = async () => {
+    const remotes = await this.git.getRemotes(true);
+    const remote = remotes.find((r) => r.name === 'origin');
+    if (!remote) {
+      return undefined;
+    }
+    return remote;
+  };
+
   public getRepo = (location: string) => {
     location = resolve(this.#location, location);
     const repo = this.repos.find((r) => r.root === location);
@@ -59,11 +68,13 @@ class Project {
   public add = async (url: string, target: string) => {
     await this.git.submoduleAdd(url, target);
     await this[setup]();
+    await this.save();
   };
 
   public remove = async (target: string) => {
     const repo = this.getRepo(target);
     await this.git.rm(repo.root);
+    await this.save();
   };
 
   public [setup] = async () => {
@@ -113,7 +124,7 @@ class Project {
       });
     }
 
-    if (!isClean || status.ahead) {
+    if (status.ahead) {
       await this.git.push();
     }
   };

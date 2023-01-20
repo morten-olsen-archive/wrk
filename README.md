@@ -1,6 +1,16 @@
 `wrk` - a local `git` manager
 ====
 
+Install
+----
+
+```bash
+npm i -g @morten-olsen/wrk
+```
+
+
+
+
 Setup
 ----
 
@@ -26,7 +36,9 @@ wrk clone <remote-url>
 which wrk > /dev/null && eval `wrk tools bash
 ```
 
-Working with repos
+
+
+Working with repositories
 ----
 
 ### Show repos
@@ -35,40 +47,40 @@ Working with repos
 wrk list
 ```
 
-### Add a repo to the workspace
+### Add a repository to the workspace
 
 ```bash
 wrk repo add <remote-url> <name>
 # wrk repo add https://github.com/morten-olsen/wrk tools/wrk
 ```
 
-### Link the repo to another location
+### Link the repository to another location
 
 ```
 wrk repo link --from tools/wrk --to ~/active/wrk
 ```
 
-### Move a repo
+### Move a repository
 
 ```bash
 wrk repo move <old-name> <new-name>
 # wrk repo move tools/wrk cli-tools/wrk
 ```
 
-### Remove a repo
+### Remove a repository
 
 ```bash
 wrk repo remove <name>
 # wrk repo remove cli-tools/wrk
 ```
 
-### Navigating to a repo
+### Navigating to a repository
 
 ```bash
 wrk-cd
 ```
 
-### Get status of all repos
+### Get status of all repositories
 
 ```bash
 wrk update # fill fetch all tracked repos

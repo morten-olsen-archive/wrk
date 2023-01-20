@@ -14,13 +14,6 @@ class Repo {
     this.#project = project;
   }
 
-  #getRoot = async () => {
-    const output = await this.#repo.raw('rev-parse', {
-      '--show-toplevel': null,
-    });
-    return output.trim();
-  };
-
   public get root() {
     return this.#root;
   }
@@ -58,6 +51,7 @@ class Repo {
     const rootDir = resolve(this.#project.root, location);
     await mkdirp(resolve(rootDir, '..'));
     this.#project.git.mv(this.root, location);
+    await this.#project.save();
   };
 
   public link = async (location: string) => {

@@ -1,5 +1,11 @@
 # @morten-olsen/wrk
 
+## 0.1.0
+
+### Minor Changes
+
+- a6bf23f: fix an issue around how submodules are initialized
+
 ## 0.0.2
 
 ### Patch Changes
